@@ -3,16 +3,28 @@
     x:Class="MobileApp.AppShell"
     xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
     xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
-    xmlns:local="clr-namespace:MobileApp"
-    Shell.FlyoutBehavior="Disabled">
+    xmlns:local="clr-namespace:MobileApp" FlyoutBackgroundColor="LightSkyBlue">
 
-    <TabBar>
-        <ShellContent
-               Title="Shopping Lists"
-               ContentTemplate="{DataTemplate local:MainPage}" />
-        <ShellContent
-               Title="About"
-               ContentTemplate="{DataTemplate local:AboutPage}" />
-    </TabBar>
+    <Shell.ItemTemplate>
+        <DataTemplate>
+            <Grid ColumnDefinitions="50,*" Padding="10">
+                <Image Source="{Binding Icon}"/>
+                <Label Grid.Column="1" Text="{Binding Title}" TextColor="RosyBrown" FontAttributes="Bold"/>
+            </Grid>
+        </DataTemplate>
+    </Shell.ItemTemplate>
+
+    <FlyoutItem Title="Home" Icon="house.png">
+        <ShellContent Title="Home" ContentTemplate="{DataTemplate local:MainPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="About" Icon="help.png">
+        <ShellContent Title="About" ContentTemplate="{DataTemplate local:AboutPage}" />
+    </FlyoutItem>
+
+    <FlyoutItem Title="Shopping" Icon="lettera.png">
+        <ShellContent Title="Shopping" ContentTemplate="{DataTemplate local:EntryProduct}" />
+    </FlyoutItem>
+
 
 </Shell>
